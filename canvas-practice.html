@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title></title>
+
+	<style type="text/css" media="screen">
+		#the-canvas{
+			border: 5px solid black;
+			margin: 20px;
+		}
+	</style>
+
+	
+
+
+</head>
+<body>
+
+	<canvas id="the-canvas" height="500px" width="500px">
+	<!-- a place for us to draw -->
+	</canvas>
+
+	<script type="text/javascript">
+		var canvas = document.getElementById('the-canvas');
+		var context = canvas.getContext('2d');
+
+		// Make the pen red
+		context.strokeStyle = '#ff0000';
+		// Make the line 10px wide
+		context.lineWidth = 10;
+		// Move the pen to x=100, y=100
+		// context.moveTo(100, 100);
+		// Actually create but not draw(yet) a line
+		// context.lineTo(200, 200);
+		// context.lineTo(300, 100);
+		// context.lineTo(100, 200);
+		// context.lineTo(300, 150);
+		// context.lineTo(100, 100);
+		// Fill the line in
+		// context.stroke();
+
+
+		
+		// context.beginPath();
+		// if you add in true as the last parameter, it draws it backwards
+		// context.arc(250, 250, 50, 0*Math.PI, 1.5*Math.PI);
+		// context.arc(50, 50, 50, 0*Math.PI, 2*Math.PI);
+		// context.fillStyle = "#0000ff";
+		// context.fill();
+		// Stroke won't fill in the arc unlike context.fill(); Stroke draws the object, fill fills it in
+		// context.fill();
+		// context.stroke();
+
+		// context.rect(300, 20, 100, 100);
+		// context.stroke();
+
+		var r = 0;
+		var g = 0;
+		var b = 0;
+		var x = 0;
+		var y = 0;
+		radius = 30;
+		endArc = 0;
+		r += 3;
+		g++;
+		b++;
+	
+		function draw(){
+			context.fillStyle ='#'+r+g+b;//color will be dynamic
+			context.clearRect(0,0,500,500)
+			context.beginPath();
+			context.arc(x,y,radius,0*Math.PI,Math.PI*endArc);
+			context.fill();
+			x += 1; //will change if ball runs into left or right
+			y += 1;//will change if ball runs into top or bottom
+			// radius += 1;
+			endArc += 1;
+
+			// To make ball bounce, use if statement. Make it change colors when it hits the wall
+			if(x >470){
+				y += 0
+				//If x=y, ball moves to bottom right and stays there
+				// x = 20
+				x -= y
+			
+			}else if(y>470){
+				x += 0
+				y -= x
+			};
+
+		}
+
+		// setInterval(what function to call, how often to call it)
+		//x, y and radius are continuously updated b/c of setInterval
+		var ballInterval = setInterval(draw, 5);
+	
+
+		
+	</script>
+	
+</body>
+</html>
